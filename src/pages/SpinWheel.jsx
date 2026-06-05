@@ -1,11 +1,51 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Confetti from "react-confetti";
-import { Refrigerator, Ticket, Speaker, Sparkles } from "lucide-react";
+import { Ticket, Speaker, Sparkles } from "lucide-react";
 import { obtenerPremio, revelarPremio } from "../services/demoStorage";
 
+function MetalFridgeIcon({ size = 96, className = "" }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 96 96"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+      aria-hidden="true"
+    >
+      <defs>
+        <linearGradient id="fridge-silver-body" x1="16" y1="8" x2="82" y2="86" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stopColor="#F5F7FA" />
+          <stop offset="22%" stopColor="#D8DEE6" />
+          <stop offset="50%" stopColor="#B8C0CA" />
+          <stop offset="74%" stopColor="#E7EBF0" />
+          <stop offset="100%" stopColor="#8F99A6" />
+        </linearGradient>
+        <linearGradient id="fridge-silver-highlight" x1="24" y1="10" x2="54" y2="84" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.95" />
+          <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0" />
+        </linearGradient>
+        <linearGradient id="fridge-silver-shadow" x1="48" y1="12" x2="48" y2="86" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stopColor="#6F7883" stopOpacity="0.85" />
+          <stop offset="100%" stopColor="#3B434C" stopOpacity="0.92" />
+        </linearGradient>
+      </defs>
+      <rect x="20" y="8" width="56" height="80" rx="12" fill="url(#fridge-silver-body)" stroke="url(#fridge-silver-shadow)" strokeWidth="2" />
+      <path d="M28 18H42" stroke="#FFFFFF" strokeOpacity="0.8" strokeWidth="5" strokeLinecap="round" />
+      <path d="M28 54H42" stroke="#FFFFFF" strokeOpacity="0.74" strokeWidth="5" strokeLinecap="round" />
+      <rect x="25" y="12" width="14" height="72" rx="7" fill="url(#fridge-silver-highlight)" opacity="0.55" />
+      <rect x="57" y="16" width="6" height="28" rx="3" fill="#6C7680" />
+      <rect x="57" y="56" width="6" height="22" rx="3" fill="#6C7680" />
+      <path d="M57 28H76" stroke="#FFFFFF" strokeOpacity="0.32" strokeWidth="2.5" strokeLinecap="round" />
+      <path d="M57 68H76" stroke="#FFFFFF" strokeOpacity="0.28" strokeWidth="2.5" strokeLinecap="round" />
+    </svg>
+  );
+}
+
 const PRIZE_INFO = {
-  Minibar: { icon: Refrigerator, color: "#BF843B" },
+  Minibar: { icon: MetalFridgeIcon, color: "#D0D5DB" },
   "Orden de compra": { icon: Ticket, color: "#3F5573" },
   Parlante: { icon: Speaker, color: "#8596A6" },
 };
@@ -143,8 +183,8 @@ export default function SpinWheel() {
             const isSelected = selectedBox === idx;
             const isOther = selectedBox !== null && !isSelected;
 
-            let IconComponent = Refrigerator;
-            let iconColor = "#BF843B";
+            let IconComponent = MetalFridgeIcon;
+            let iconColor = "#D0D5DB";
             let label = "";
 
             if (revealed) {
