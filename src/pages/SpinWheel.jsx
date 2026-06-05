@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Confetti from "react-confetti";
 import { Ticket, Speaker, Sparkles } from "lucide-react";
 import { obtenerPremio, revelarPremio } from "../services/demoStorage";
+import environmentBg from "../assets/images/enviroment.png";
 
 function MetalFridgeIcon({ size = 96, className = "" }) {
   return (
@@ -233,7 +234,12 @@ export default function SpinWheel() {
         .sp-page {
           position: fixed;
           inset: 0;
-          background: radial-gradient(circle at 10% 12%, #3F5573 0%, #052A59 42%), #052A59;
+          background-image:
+            linear-gradient(180deg, rgba(5, 42, 89, 0.72), rgba(5, 42, 89, 0.9)),
+            url(${environmentBg});
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
           color: #F2F2F2;
           overflow: auto;
         }
@@ -332,14 +338,15 @@ export default function SpinWheel() {
 
         .mystery-box {
           position: relative;
-          background: linear-gradient(170deg, rgba(63, 85, 115, 0.95), rgba(35, 58, 85, 0.95));
-          border: 1px solid rgba(133, 150, 166, 0.75);
+          background: linear-gradient(170deg, rgba(63, 85, 115, 0.94), rgba(23, 40, 60, 0.96));
+          border: 1px solid rgba(242, 242, 242, 0.16);
           border-radius: 14px;
           min-height: 216px;
           color: #F2F2F2;
           transition: transform .2s ease, opacity .2s ease, box-shadow .2s ease;
           overflow: hidden;
           box-shadow: 0 10px 24px rgba(5, 42, 89, 0.28);
+          backdrop-filter: blur(2px);
         }
 
         .box-shine {
@@ -440,7 +447,7 @@ export default function SpinWheel() {
 
         .modal-card {
           width: min(430px, 100%);
-          background: linear-gradient(170deg, #F2F2F2 0%, #EAEFF3 100%);
+          background: linear-gradient(170deg, rgba(242, 242, 242, 0.96) 0%, rgba(234, 239, 243, 0.98) 100%);
           border-radius: 16px;
           border: 1px solid #8596A6;
           text-align: center;
@@ -448,6 +455,7 @@ export default function SpinWheel() {
           color: #052A59;
           box-shadow: 0 14px 40px rgba(5, 42, 89, 0.3);
           animation: rise-in .35s ease;
+          backdrop-filter: blur(6px);
         }
 
         .modal-icon {

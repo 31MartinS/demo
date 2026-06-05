@@ -1,4 +1,5 @@
 import Formulario from '../components/Formulario'
+import environmentBg from "../assets/images/enviroment.png";
 
 export default function Home() {
   return (
@@ -13,7 +14,12 @@ export default function Home() {
         .home-page {
           position: fixed;
           inset: 0;
-          background: #052A59;
+          background-image:
+            linear-gradient(180deg, rgba(5, 42, 89, 0.72), rgba(5, 42, 89, 0.9)),
+            url(${environmentBg});
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
           display: flex;
           flex-direction: column;
           overflow: hidden;

@@ -174,12 +174,13 @@ export default function Formulario() {
 
         .frm-card {
           position: relative;
-          background: linear-gradient(170deg, #F2F2F2 0%, #E9EDF1 100%);
-          border: 1px solid rgba(133, 150, 166, 0.8);
+          background: linear-gradient(170deg, rgba(242, 242, 242, 0.96) 0%, rgba(233, 237, 241, 0.98) 100%);
+          border: 1px solid rgba(242, 242, 242, 0.18);
           border-radius: 20px;
           padding: clamp(20px, 4vh, 30px);
           box-shadow: 0 14px 34px rgba(5, 42, 89, 0.22);
           overflow: hidden;
+          backdrop-filter: blur(6px);
         }
 
         .frm-shape {
