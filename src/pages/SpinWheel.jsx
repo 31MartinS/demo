@@ -139,7 +139,7 @@ export default function SpinWheel() {
     setOpening(true);
     await revelarPremio(email);
 
-    const fakes = Array(5)
+    const fakes = Array(4)
       .fill(null)
       .map(() => getRandomFakePrize(premioReal));
     setFakePrizes(fakes);
@@ -179,7 +179,7 @@ export default function SpinWheel() {
         </header>
 
         <section className="boxes-container">
-          {[0, 1, 2, 3, 4].map((idx) => {
+          {[0, 1, 2, 3].map((idx) => {
             const isSelected = selectedBox === idx;
             const isOther = selectedBox !== null && !isSelected;
 
@@ -213,7 +213,7 @@ export default function SpinWheel() {
                 <div className="box-shine" aria-hidden />
                 <div className="box-inner">
                   <div className="box-icon" style={{ color: iconColor }}>
-                    <IconComponent size={95} strokeWidth={1.65} />
+                    <IconComponent size={148} strokeWidth={1.65} />
                   </div>
                   {label ? <div className="box-label">{label}</div> : null}
                 </div>
@@ -335,7 +335,7 @@ export default function SpinWheel() {
           background: linear-gradient(170deg, rgba(63, 85, 115, 0.95), rgba(35, 58, 85, 0.95));
           border: 1px solid rgba(133, 150, 166, 0.75);
           border-radius: 14px;
-          min-height: 160px;
+          min-height: 216px;
           color: #F2F2F2;
           transition: transform .2s ease, opacity .2s ease, box-shadow .2s ease;
           overflow: hidden;
@@ -373,10 +373,16 @@ export default function SpinWheel() {
           flex-direction: column;
           align-items: center;
           justify-content: center;
-          gap: 10px;
-          padding: 14px;
+          gap: 8px;
+          padding: 10px;
           position: relative;
           z-index: 1;
+        }
+
+        .box-icon svg {
+          width: 100%;
+          height: auto;
+          max-width: 150px;
         }
 
         .box-icon {
@@ -497,15 +503,17 @@ export default function SpinWheel() {
         @media (max-width: 640px) {
           .boxes-container {
             grid-template-columns: repeat(2, minmax(120px, 1fr));
-            max-width: 340px;
+            max-width: 360px;
             margin: 0 auto;
             justify-content: center;
           }
 
-          .boxes-container .mystery-box:nth-child(5) {
-            grid-column: 1 / -1;
-            width: min(170px, 100%);
-            justify-self: center;
+          .mystery-box {
+            min-height: 192px;
+          }
+
+          .box-icon svg {
+            max-width: 140px;
           }
         }
 
